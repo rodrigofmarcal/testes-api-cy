@@ -7,12 +7,12 @@ describe('Login', () => {
             method: 'POST',
             url: 'login',
             body: {
-                "email": "isabela.marcal@qa.com",
+                "email": "isabelamarcal@gmail.com",
                 "password": "teste" 
             }
         }).then((response) => {
             expect(response.status).to.equal(200)
-            expect(response.body.message).to.equal('Login realizado com sucesso')
+            expect(response.body.message).to.be.equal('Login realizado com sucesso')
             cy.log(response.body.authorization)
         })
     });
