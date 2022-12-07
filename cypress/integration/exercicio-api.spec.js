@@ -4,7 +4,7 @@ import contrato from '../contracts/usuarios.contract'
 describe('Testes da Funcionalidade Usuários', () => {
     let token
 
-    before(() => {
+    beforeEach(() => {
         cy.token('isabelamarcal@gmail.com', 'teste').then(tkn => { token = tkn })
     });
 
