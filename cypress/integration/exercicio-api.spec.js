@@ -62,7 +62,7 @@ describe('Testes da Funcionalidade Usuários', () => {
 
     });
 
-    it('Deve editar um usuário previamente cadastrado', () => {
+    /* it('Deve editar um usuário previamente cadastrado', () => {
         cy.request('usuarios').then(response => {
             let id = response.body.usuarios[1]._id
             let usuario = `usuario` + `${Math.floor(Math.random() * 100000000)}`
@@ -83,18 +83,18 @@ describe('Testes da Funcionalidade Usuários', () => {
             })
         })
 
-    });
+    }); */
 
     it('Deve deletar um usuário previamente cadastrado', () => {
         let usuario = `usuario` + `${Math.floor(Math.random() * 100000000)}`
         let email = `${usuario}@qa.com`
-            
+
         cy.cadastrarUsuario("Fulano Silva", "fulanosilva@qa.com.br", "teste", "true")
-                  .then(response => {
+            .then(response => {
                 let id = response.body._id
                 console.log(response)
-               
-               
+
+
                 cy.request({
                     method: 'DELETE',
                     url: `usuarios/${id}`
@@ -106,7 +106,34 @@ describe('Testes da Funcionalidade Usuários', () => {
                 }))
 
             })
-    })
-});
+    
+
+    it('Deve editar um usuário previamente cadastrado', () => {
+        let usuario = `usuario` + `${Math.floor(Math.random() * 100000000)}`
+        let email = `${usuario}@qa.com`
+
+        cy.cadastrarUsuario("Fulano Silva", "fulanosilva@qa.com.br", "teste", "true")
+            .then(response => {
+                let id = response.body._id
+                console.log(response)
+
+                cy.request({
+                    method: 'PUT',
+                    url: `usuarios/${id}`,
+                    headers: { authorization: token },
+                    body:
+                    {
+                        "nome": "Fulano da Silva Sauro",
+                        "email": email,
+                        "password": "teste",
+                        "administrador": "true"
+                    }
+                }).then(response => {
+                    expect(response.body.message).to.equal("Registro alterado com sucesso")
+                })
 
 
+            })
+    });
+
+})})
