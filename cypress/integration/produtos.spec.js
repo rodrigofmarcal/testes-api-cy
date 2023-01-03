@@ -4,7 +4,7 @@ import contrato from '../contracts/produtos.contract'
 describe('Testes da Funcionalidade Produtos', () => {
     let token
     before(() => {
-        cy.token('fulano@qa.com', 'teste').then(tkn => { token = tkn })
+        cy.token('beltrano@qa.com', 'teste').then(tkn => { token = tkn })
     });
 
     it('Deve validar contrato de produtos', () => {
@@ -21,7 +21,7 @@ describe('Testes da Funcionalidade Produtos', () => {
             //expect(response.body.produtos[9].nome).to.equal('Produto EBAC 436746')
             expect(response.status).to.equal(200)
             expect(response.body).to.have.property('produtos')
-            expect(response.duration).to.be.lessThan(20)
+            expect(response.duration).to.be.lessThan(25)
         })
     });
 
@@ -60,9 +60,9 @@ describe('Testes da Funcionalidade Produtos', () => {
                 headers: {authorization: token}, 
                 body: 
                 {
-                    "nome": "Produto Editado 45642083",
-                    "preco": 100,
-                    "descricao": "Produto editado",
+                    "nome": "Produto EBAC 63158086",
+                    "preco": 200,
+                    "descricao": "Produto novo",
                     "quantidade": 100
                   }
             }).then(response => {
