@@ -3,10 +3,16 @@ pipeline{
 
     stages{
         stage('Setup'){
-            sh 'npm install'
+            steps {
+               sh 'npm install'  
+            }
+            
         }
         stage('Test'){
-            sh 'NO_COLOR=1 npm run cy:run-ci'
+            steps {
+               sh 'NO_COLOR=1 npm run cy:run-ci' 
+            }
+            
         }
      }
 }
