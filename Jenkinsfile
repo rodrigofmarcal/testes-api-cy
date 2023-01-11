@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clonar repositorio') {
             steps {
-               git 'https://github.com/rodrigofmarcal/testes-api-cy.git'
+               git branch 'main', url: 'https://github.com/rodrigofmarcal/testes-api-cy.git'
             }
         }
         stage('Instalar dependencias') {
