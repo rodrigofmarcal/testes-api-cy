@@ -9,18 +9,18 @@ pipeline {
         }
         stage('Instalar dependencias') {
             steps {
-               sh 'npm install'  
+               bat 'npm install'  
             }
         }
         stage('Iniciar servidor') {
             steps {
-                sh 'npx serverest'
+                bat 'npx serverest'
             }
 
         }
         stage('Executar Testes') {
             steps {
-               sh 'NO_COLOR=1 npm run cy:run-ci' 
+               bat 'NO_COLOR=1 npm run cy:run-ci' 
             }
             
         }
