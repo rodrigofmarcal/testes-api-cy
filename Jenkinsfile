@@ -12,6 +12,12 @@ pipeline {
                sh 'npm install'  
             }
         }
+        stage('Iniciar servidor') {
+            steps {
+                sh 'npx serverest'
+            }
+
+        }
         stage('Executar Testes') {
             steps {
                sh 'NO_COLOR=1 npm run cy:run-ci' 
